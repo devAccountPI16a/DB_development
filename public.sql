@@ -12,7 +12,7 @@
  Target Server Version : 90605
  File Encoding         : 65001
 
- Date: 29/04/2020 23:14:25
+ Date: 04/05/2020 13:31:49
 */
 
 
@@ -182,6 +182,19 @@ CREATE TABLE "public"."classrooms" (
 ;
 
 -- ----------------------------
+-- Records of classrooms
+-- ----------------------------
+INSERT INTO "public"."classrooms" VALUES (2, 9, 404);
+INSERT INTO "public"."classrooms" VALUES (3, 9, 408);
+INSERT INTO "public"."classrooms" VALUES (6, 8, 201);
+INSERT INTO "public"."classrooms" VALUES (8, 8, 605);
+INSERT INTO "public"."classrooms" VALUES (16, 4, 23);
+INSERT INTO "public"."classrooms" VALUES (17, 2, 23);
+INSERT INTO "public"."classrooms" VALUES (18, 213, 1);
+INSERT INTO "public"."classrooms" VALUES (19, 123, 1);
+INSERT INTO "public"."classrooms" VALUES (20, 13, 1);
+
+-- ----------------------------
 -- Table structure for departments
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."departments";
@@ -195,6 +208,11 @@ CREATE TABLE "public"."departments" (
 ;
 
 -- ----------------------------
+-- Records of departments
+-- ----------------------------
+INSERT INTO "public"."departments" VALUES (3, 'Программная инженерия', NULL, 7, 16);
+
+-- ----------------------------
 -- Table structure for education_type
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."education_type";
@@ -203,6 +221,12 @@ CREATE TABLE "public"."education_type" (
   "name_education_type" text COLLATE "pg_catalog"."default" NOT NULL
 )
 ;
+
+-- ----------------------------
+-- Records of education_type
+-- ----------------------------
+INSERT INTO "public"."education_type" VALUES (2, 'Очное');
+INSERT INTO "public"."education_type" VALUES (3, 'Заочное');
 
 -- ----------------------------
 -- Table structure for faculty
@@ -214,6 +238,19 @@ CREATE TABLE "public"."faculty" (
   "logo_faculty" text COLLATE "pg_catalog"."default"
 )
 ;
+
+-- ----------------------------
+-- Records of faculty
+-- ----------------------------
+INSERT INTO "public"."faculty" VALUES (2, 'Горно-геологический', NULL);
+INSERT INTO "public"."faculty" VALUES (3, 'Горный', NULL);
+INSERT INTO "public"."faculty" VALUES (4, 'Инженерной механики и машиностроения', NULL);
+INSERT INTO "public"."faculty" VALUES (5, 'Металлургии и теплоэнергетики', NULL);
+INSERT INTO "public"."faculty" VALUES (6, 'Электротехнический', NULL);
+INSERT INTO "public"."faculty" VALUES (7, 'Компьютерных наук и технологий', NULL);
+INSERT INTO "public"."faculty" VALUES (8, 'Компьютерных информационных технологий и автоматики', NULL);
+INSERT INTO "public"."faculty" VALUES (9, 'Экологии и химической технологии', NULL);
+INSERT INTO "public"."faculty" VALUES (10, 'Инженерно-экономический', NULL);
 
 -- ----------------------------
 -- Table structure for groups_on_lesson
@@ -304,6 +341,12 @@ CREATE TABLE "public"."subjects" (
 ;
 
 -- ----------------------------
+-- Records of subjects
+-- ----------------------------
+INSERT INTO "public"."subjects" VALUES (2, 'Высшая математика');
+INSERT INTO "public"."subjects" VALUES (3, 'Математический анализ');
+
+-- ----------------------------
 -- Table structure for teacher
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."teacher";
@@ -315,13 +358,19 @@ CREATE TABLE "public"."teacher" (
   "id_teacher_department" int4 NOT NULL,
   "id_teacher_faculty" int4 NOT NULL,
   "id_teacher_position" int4 NOT NULL,
-  "num_teacher" text COLLATE "pg_catalog"."default" NOT NULL,
-  "photo_teacher" text COLLATE "pg_catalog"."default"
+  "photo_teacher" text COLLATE "pg_catalog"."default",
+  "name_teacher" text COLLATE "pg_catalog"."default" NOT NULL
 )
 ;
 COMMENT ON COLUMN "public"."teacher"."second_name_teacher" IS 'Фамилия преподавателя';
 COMMENT ON COLUMN "public"."teacher"."third_name_teacher" IS 'Отчество преподавателя';
-COMMENT ON COLUMN "public"."teacher"."num_teacher" IS 'Имя преподавателя';
+COMMENT ON COLUMN "public"."teacher"."name_teacher" IS 'Имя преподавателя';
+
+-- ----------------------------
+-- Records of teacher
+-- ----------------------------
+INSERT INTO "public"."teacher" VALUES (3, 'Федяев', 'Иванович', '	fedyaev@donntu.org', 3, 7, 8, NULL, 'Олег');
+INSERT INTO "public"."teacher" VALUES (5, 'Скворцов', 'Ефремович', 'a.e.skvorcov@mail.ru', 3, 7, 8, NULL, 'Анатолий');
 
 -- ----------------------------
 -- Table structure for teacher_subjects
@@ -332,6 +381,11 @@ CREATE TABLE "public"."teacher_subjects" (
   "id_subject_for_teacher" int4 NOT NULL
 )
 ;
+
+-- ----------------------------
+-- Records of teacher_subjects
+-- ----------------------------
+INSERT INTO "public"."teacher_subjects" VALUES (5, 3);
 
 -- ----------------------------
 -- Table structure for teachers_on_lesson
@@ -355,6 +409,22 @@ CREATE TABLE "public"."teachers_positions" (
 ;
 
 -- ----------------------------
+-- Records of teachers_positions
+-- ----------------------------
+INSERT INTO "public"."teachers_positions" VALUES (3, 'Аспирант');
+INSERT INTO "public"."teachers_positions" VALUES (4, 'Ассистент');
+INSERT INTO "public"."teachers_positions" VALUES (5, 'Ведущий научный сотрудник ');
+INSERT INTO "public"."teachers_positions" VALUES (6, 'Главный научный сотрудник');
+INSERT INTO "public"."teachers_positions" VALUES (7, 'Докторант');
+INSERT INTO "public"."teachers_positions" VALUES (8, 'Доцент');
+INSERT INTO "public"."teachers_positions" VALUES (9, 'Младший научный сотрудник');
+INSERT INTO "public"."teachers_positions" VALUES (10, 'Научный сотрудник');
+INSERT INTO "public"."teachers_positions" VALUES (11, 'Преподаватель');
+INSERT INTO "public"."teachers_positions" VALUES (12, 'Профессор');
+INSERT INTO "public"."teachers_positions" VALUES (13, 'Старший преподаватель');
+INSERT INTO "public"."teachers_positions" VALUES (14, 'Старший научный сотрудник');
+
+-- ----------------------------
 -- Table structure for type_lesson
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."type_lesson";
@@ -366,6 +436,22 @@ CREATE TABLE "public"."type_lesson" (
 ;
 
 -- ----------------------------
+-- Records of type_lesson
+-- ----------------------------
+INSERT INTO "public"."type_lesson" VALUES (2, 'урок', 'О');
+INSERT INTO "public"."type_lesson" VALUES (6, 'лекция', 'О');
+INSERT INTO "public"."type_lesson" VALUES (8, 'семинар', 'О');
+INSERT INTO "public"."type_lesson" VALUES (9, 'мастер-класс', 'О');
+INSERT INTO "public"."type_lesson" VALUES (10, 'экскурсия', 'О');
+INSERT INTO "public"."type_lesson" VALUES (11, 'лабораторная работа', 'О');
+INSERT INTO "public"."type_lesson" VALUES (12, 'контрольная работа', 'О');
+INSERT INTO "public"."type_lesson" VALUES (13, 'колоквиум', 'О');
+INSERT INTO "public"."type_lesson" VALUES (14, 'зачёт', 'С');
+INSERT INTO "public"."type_lesson" VALUES (15, 'экзамен', 'С');
+INSERT INTO "public"."type_lesson" VALUES (16, 'консультация', 'О');
+INSERT INTO "public"."type_lesson" VALUES (17, 'консультация', 'С');
+
+-- ----------------------------
 -- Table structure for week
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."week";
@@ -375,6 +461,24 @@ CREATE TABLE "public"."week" (
   "week_type" text COLLATE "pg_catalog"."default" NOT NULL
 )
 ;
+
+-- ----------------------------
+-- Records of week
+-- ----------------------------
+INSERT INTO "public"."week" VALUES (2, 'Понедельник', 'В');
+INSERT INTO "public"."week" VALUES (3, 'Вторник', 'В');
+INSERT INTO "public"."week" VALUES (4, 'Среда', 'В');
+INSERT INTO "public"."week" VALUES (5, 'Четверг', 'В');
+INSERT INTO "public"."week" VALUES (6, 'Пятница', 'В');
+INSERT INTO "public"."week" VALUES (7, 'Суббота', 'В');
+INSERT INTO "public"."week" VALUES (8, 'Воскресенье', 'В');
+INSERT INTO "public"."week" VALUES (9, 'Понедельник', 'Н');
+INSERT INTO "public"."week" VALUES (10, 'Вторник', 'Н');
+INSERT INTO "public"."week" VALUES (11, 'Среда', 'Н');
+INSERT INTO "public"."week" VALUES (12, 'Четверг', 'Н');
+INSERT INTO "public"."week" VALUES (13, 'Пятница', 'Н');
+INSERT INTO "public"."week" VALUES (14, 'Суббота', 'Н');
+INSERT INTO "public"."week" VALUES (15, 'Воскресенье', 'Н');
 
 -- ----------------------------
 -- Function structure for add_classroom
@@ -850,93 +954,6 @@ END$BODY$
 -- ----------------------------
 -- Function structure for add_teacher
 -- ----------------------------
-DROP FUNCTION IF EXISTS "public"."add_teacher"("name_input_teacher" text, "second_name_input_teacher" text, "third_name_input_teacher" text, "login_input_teacher" text, "name_faculty_input_teacher" text, "name_department_input_teacher" text, "name_position_input_teacher" text, "input_email" text, "photo_input_teacher" text);
-CREATE OR REPLACE FUNCTION "public"."add_teacher"("name_input_teacher" text, "second_name_input_teacher" text, "third_name_input_teacher" text, "login_input_teacher" text, "name_faculty_input_teacher" text, "name_department_input_teacher" text, "name_position_input_teacher" text, "input_email" text, "photo_input_teacher" text)
-  RETURNS "pg_catalog"."text" AS $BODY$
-
-	DECLARE
-
-  id_input_faculty INTEGER := 0;
-
-	id_input_department INTEGER := 0;
-
-	id_input_position INTEGER := 0;
-
-	is_faculty_exist BOOLEAN := FALSE;
-
-	is_department_exist BOOLEAN := FALSE;
-
-	is_position_exist BOOLEAN := FALSE;
-
-	is_login_uniq BOOLEAN := FALSE;
-
-BEGIN
-
-	SELECT INTO is_faculty_exist check_faculty_exist(name_faculty_input_teacher);
-
-  SELECT INTO is_department_exist check_department_exist(name_department_input_teacher);
-
-  SELECT INTO is_position_exist check_position_exist(name_position_input_teacher);
-
-  SELECT INTO is_login_uniq  login_uniqueness(login_input_teacher);
-
-	IF is_faculty_exist = FALSE THEN
-
-		RETURN 'Факультета не существует!';
-
-	ELSE
-
-		IF is_department_exist = FALSE THEN
-
-			RETURN 'Кафедры не существует!';
-
-		ELSE
-
-			IF is_position_exist = FALSE THEN
-
-				RETURN 'Должности не существует!';
-
-			ELSE
-
-				IF is_login_uniq = FALSE THEN
-
-					RETURN 'Логин не уникален!';
-
-				ELSE
-
-					SELECT faculty.id_faculty FROM faculty INTO id_input_faculty WHERE faculty.name_faculty = name_faculty_input_teacher;
-
-					SELECT departments.id_department FROM departments INTO id_input_department WHERE departments.name_department = name_department_input_teacher;
-
-					SELECT teachers_positions.id_position FROM teachers_positions INTO id_input_position WHERE teachers_positions.name_position = name_position_input_teacher;
-
-					IF EXISTS(SELECT FROM teacher WHERE teacher.num_teacher = name_input_teacher AND teacher.second_name_teacher = second_name_input_teacher AND teacher.third_name_teacher = third_name_input_teacher AND teacher."login" = login_input_teacher AND teacher.id_teacher_faculty = id_input_faculty AND teacher.id_teacher_department = id_input_department AND teacher.id_teacher_position = id_input_position AND teacher.teacher_email = input_email AND teacher.photo_teacher = photo_input_teacher) THEN
-
-						RETURN 'Запись уже существует!';
-
-					ELSE
-
-						INSERT INTO teacher(id_teacher_faculty, id_teacher_department, id_teacher_position, num_teacher, second_name_teacher, third_name_teacher,"login", teacher_email, photo_teacher) VALUES(id_input_faculty,id_input_department,id_input_position,name_input_teacher, second_name_input_teacher, third_name_input_teacher, login_input_teacher, input_email, photo_input_teacher);
-
-						RETURN 'Запись добавлена!';
-
-					END IF;
-
-			END IF;
-
-		END IF;
-
-	END IF;
-
-END IF;
-
-END$BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
-
--- ----------------------------
--- Function structure for add_teacher
--- ----------------------------
 DROP FUNCTION IF EXISTS "public"."add_teacher"("name_input_teacher" text, "second_name_input_teacher" text, "third_name_input_teacher" text, "login_input_teacher" text, "name_faculty_input_teacher" text, "name_department_input_teacher" text, "name_position_input_teacher" text, "input_email" text);
 CREATE OR REPLACE FUNCTION "public"."add_teacher"("name_input_teacher" text, "second_name_input_teacher" text, "third_name_input_teacher" text, "login_input_teacher" text, "name_faculty_input_teacher" text, "name_department_input_teacher" text, "name_position_input_teacher" text, "input_email" text)
   RETURNS "pg_catalog"."text" AS $BODY$
@@ -997,13 +1014,13 @@ ELSE
 
 						SELECT teachers_positions.id_position FROM teachers_positions INTO id_input_position WHERE teachers_positions.name_position = name_position_input_teacher;
 
-							IF EXISTS(SELECT FROM teacher WHERE teacher.num_teacher = name_input_teacher AND teacher.second_name_teacher = second_name_input_teacher AND teacher.third_name_teacher = third_name_input_teacher AND teacher."login" = login_input_teacher AND teacher.id_teacher_faculty = id_input_faculty AND teacher.id_teacher_department = id_input_department AND teacher.id_teacher_position = id_input_position AND teacher.teacher_email = input_email) THEN
+							IF EXISTS(SELECT FROM teacher WHERE teacher.name_teacher = name_input_teacher AND teacher.second_name_teacher = second_name_input_teacher AND teacher.third_name_teacher = third_name_input_teacher AND teacher."login" = login_input_teacher AND teacher.id_teacher_faculty = id_input_faculty AND teacher.id_teacher_department = id_input_department AND teacher.id_teacher_position = id_input_position AND teacher.teacher_email = input_email) THEN
 
 									RETURN 'Запись уже существует!';
 
 						ELSE
 
-							INSERT INTO teacher(id_teacher_faculty, id_teacher_department, id_teacher_position, num_teacher, second_name_teacher, third_name_teacher,"login", teacher_email) VALUES(id_input_faculty,id_input_department,id_input_position,name_input_teacher, second_name_input_teacher, third_name_input_teacher, login_input_teacher, input_email);
+							INSERT INTO teacher(id_teacher_faculty, id_teacher_department, id_teacher_position, name_teacher, second_name_teacher, third_name_teacher,"login", teacher_email) VALUES(id_input_faculty,id_input_department,id_input_position,name_input_teacher, second_name_input_teacher, third_name_input_teacher, login_input_teacher, input_email);
 
 									RETURN 'Запись добавлена!';
 
@@ -1022,59 +1039,87 @@ END$BODY$
   COST 100;
 
 -- ----------------------------
--- Function structure for add_teacher_subjects
+-- Function structure for add_teacher
 -- ----------------------------
-DROP FUNCTION IF EXISTS "public"."add_teacher_subjects"("name_input_teacher" text, "second_input_name_teacher" text, "third_input_name_teacher" text, "name_subject" text);
-CREATE OR REPLACE FUNCTION "public"."add_teacher_subjects"("name_input_teacher" text, "second_input_name_teacher" text, "third_input_name_teacher" text, "name_subject" text)
+DROP FUNCTION IF EXISTS "public"."add_teacher"("name_input_teacher" text, "second_name_input_teacher" text, "third_name_input_teacher" text, "login_input_teacher" text, "name_faculty_input_teacher" text, "name_department_input_teacher" text, "name_position_input_teacher" text, "input_email" text, "photo_input_teacher" text);
+CREATE OR REPLACE FUNCTION "public"."add_teacher"("name_input_teacher" text, "second_name_input_teacher" text, "third_name_input_teacher" text, "login_input_teacher" text, "name_faculty_input_teacher" text, "name_department_input_teacher" text, "name_position_input_teacher" text, "input_email" text, "photo_input_teacher" text)
   RETURNS "pg_catalog"."text" AS $BODY$
 
 	DECLARE
 
-		id_input_teacher INTEGER := 0;
+  id_input_faculty INTEGER := 0;
 
-		id_input_subject INTEGER := 0;
+	id_input_department INTEGER := 0;
 
-		is_teacher_exist BOOLEAN := FALSE;
+	id_input_position INTEGER := 0;
 
-		is_subject_exist BOOLEAN := FALSE;
+	is_faculty_exist BOOLEAN := FALSE;
+
+	is_department_exist BOOLEAN := FALSE;
+
+	is_position_exist BOOLEAN := FALSE;
+
+	is_login_uniq BOOLEAN := FALSE;
 
 BEGIN
 
-	SELECT INTO is_teacher_exist check_teacher_exist_by_FIO(name_input_teacher, second_input_name_teacher, third_input_name_teacher);
+	SELECT INTO is_faculty_exist check_faculty_exist(name_faculty_input_teacher);
 
-	SELECT INTO is_subject_exist check_is_subject_exist(name_subject);
+  SELECT INTO is_department_exist check_department_exist(name_department_input_teacher);
 
-	IF is_teacher_exist = FALSE THEN
+  SELECT INTO is_position_exist check_position_exist(name_position_input_teacher);
 
-		RETURN 'Преподавателя нет в базе!';
+  SELECT INTO is_login_uniq  login_uniqueness(login_input_teacher);
+
+	IF is_faculty_exist = FALSE THEN
+
+		RETURN 'Факультета не существует!';
 
 	ELSE
 
-			IF is_subject_exist = FALSE THEN
+		IF is_department_exist = FALSE THEN
 
-				RETURN 'Предмета нет в базе!';
+			RETURN 'Кафедры не существует!';
+
+		ELSE
+
+			IF is_position_exist = FALSE THEN
+
+				RETURN 'Должности не существует!';
 
 			ELSE
 
-				SELECT teacher.id_teacher INTO id_input_teacher FROM teacher WHERE teacher.name_teacher = name_input_teacher AND teacher.second_name_teacher = second_input_name_teacher AND teacher.third_name_teacher = third_input_name_teacher;
+				IF is_login_uniq = FALSE THEN
 
-				SELECT subjects.id_subject INTO id_input_subject FROM subjects WHERE subjects.name_subject = name_subject;
+					RETURN 'Логин не уникален!';
 
-						IF EXISTS(SELECT FROM teacher_subjects WHERE teacher_subjects.id_subject_for_teacher = id_input_subject AND teacher_subjects.id_teacher_for_subject = id_input_teacher) THEN
+				ELSE
 
-								RETURN 'Запись уже существует!';
+					SELECT faculty.id_faculty FROM faculty INTO id_input_faculty WHERE faculty.name_faculty = name_faculty_input_teacher;
 
-						ELSE
+					SELECT departments.id_department FROM departments INTO id_input_department WHERE departments.name_department = name_department_input_teacher;
 
-							INSERT INTO teacher_subjects(id_lesson_for_teacher, id_teachers_on_lesson) VALUES (id_input_teacher, id_input_subject);
+					SELECT teachers_positions.id_position FROM teachers_positions INTO id_input_position WHERE teachers_positions.name_position = name_position_input_teacher;
 
-								RETURN 'Запись добавлена!';
+					IF EXISTS(SELECT FROM teacher WHERE teacher.name_teacher = name_input_teacher AND teacher.second_name_teacher = second_name_input_teacher AND teacher.third_name_teacher = third_name_input_teacher AND teacher."login" = login_input_teacher AND teacher.id_teacher_faculty = id_input_faculty AND teacher.id_teacher_department = id_input_department AND teacher.id_teacher_position = id_input_position AND teacher.teacher_email = input_email AND teacher.photo_teacher = photo_input_teacher) THEN
 
-						END IF;
+						RETURN 'Запись уже существует!';
+
+					ELSE
+
+						INSERT INTO teacher(id_teacher_faculty, id_teacher_department, id_teacher_position, num_teacher, second_name_teacher, third_name_teacher,"login", teacher_email, photo_teacher) VALUES(id_input_faculty,id_input_department,id_input_position,name_input_teacher, second_name_input_teacher, third_name_input_teacher, login_input_teacher, input_email, photo_input_teacher);
+
+						RETURN 'Запись добавлена!';
+
+					END IF;
 
 			END IF;
 
+		END IF;
+
 	END IF;
+
+END IF;
 
 END$BODY$
   LANGUAGE plpgsql VOLATILE
@@ -1132,6 +1177,65 @@ BEGIN
 			END IF;
 
 		END IF;
+
+	END IF;
+
+END$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+
+-- ----------------------------
+-- Function structure for add_teacher_subjects
+-- ----------------------------
+DROP FUNCTION IF EXISTS "public"."add_teacher_subjects"("name_input_teacher" text, "second_input_name_teacher" text, "third_input_name_teacher" text, "name_subject" text);
+CREATE OR REPLACE FUNCTION "public"."add_teacher_subjects"("name_input_teacher" text, "second_input_name_teacher" text, "third_input_name_teacher" text, "name_subject" text)
+  RETURNS "pg_catalog"."text" AS $BODY$
+
+	DECLARE
+
+		id_input_teacher INTEGER := 0;
+
+		id_input_subject INTEGER := 0;
+
+		is_teacher_exist BOOLEAN := FALSE;
+
+		is_subject_exist BOOLEAN := FALSE;
+
+BEGIN
+
+	SELECT INTO is_teacher_exist check_teacher_exist_by_FIO(name_input_teacher, second_input_name_teacher, third_input_name_teacher);
+
+	SELECT INTO is_subject_exist check_is_subject_exist(name_subject);
+
+	IF is_teacher_exist = FALSE THEN
+
+		RETURN 'Преподавателя нет в базе!';
+
+	ELSE
+
+			IF is_subject_exist = FALSE THEN
+
+				RETURN 'Предмета нет в базе!';
+
+			ELSE
+
+				SELECT teacher.id_teacher INTO id_input_teacher FROM teacher WHERE teacher.name_teacher = name_input_teacher AND teacher.second_name_teacher = second_input_name_teacher AND teacher.third_name_teacher = third_input_name_teacher;
+
+				SELECT subjects.id_subject INTO id_input_subject FROM subjects WHERE subjects.name_subject = name_subject;
+
+						IF EXISTS(SELECT FROM teacher_subjects WHERE teacher_subjects.id_subject_for_teacher = id_input_subject AND teacher_subjects.id_teacher_for_subject = id_input_teacher) THEN
+
+								RETURN 'Запись уже существует!';
+
+						ELSE
+
+							INSERT INTO teacher_subjects(id_lesson_for_teacher, id_teachers_on_lesson) VALUES (id_input_teacher, id_input_subject);
+
+								RETURN 'Запись добавлена!';
+
+						END IF;
+
+			END IF;
 
 	END IF;
 
@@ -1332,19 +1436,12 @@ $BODY$
 DROP FUNCTION IF EXISTS "public"."check_is_subject_exist"("input_name_subject" text);
 CREATE OR REPLACE FUNCTION "public"."check_is_subject_exist"("input_name_subject" text)
   RETURNS "pg_catalog"."bool" AS $BODY$
-
 BEGIN
-
 	IF EXISTS(SELECT FROM subjects WHERE subjects.name_subject = input_name_subject) THEN
-
 		RETURN TRUE;
-
 	ELSE
-
 		RETURN FALSE;
-
 	END IF;
-
 END$BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
@@ -1461,6 +1558,37 @@ BEGIN
 	END IF;
 
 END$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+
+-- ----------------------------
+-- Function structure for create_sub_for_teacher
+-- ----------------------------
+DROP FUNCTION IF EXISTS "public"."create_sub_for_teacher"("login_input_replaceable_teacher" text, "login_input_replacing_teacher" text, "date_sub_teacher" date);
+CREATE OR REPLACE FUNCTION "public"."create_sub_for_teacher"("login_input_replaceable_teacher" text, "login_input_replacing_teacher" text, "date_sub_teacher" date)
+  RETURNS "pg_catalog"."text" AS $BODY$
+DECLARE
+	id_replaceable_teacher INTEGER := 0;
+	id_replacing_teacher INTEGER := 0;
+BEGIN
+	IF EXISTS(SELECT * FROM teacher WHERE teacher."login" = login_input_replaceable_teacher) THEN
+	SELECT teacher.id_teacher INTO id_replaceable_teacher WHERE teacher."login" = login_input_replaceable_teacher;
+		IF EXISTS(SELECT * FROM teacher WHERE teacher."login" = login_input_replacing_teacher) THEN
+			SELECT teacher.id_teacher INTO id_replacing_teacher WHERE teacher."login" = login_input_replacing_teacher;
+			IF EXISTS(SELECT * FROM sub_teacher WHERE sub_teacher.id_teacher = id_replaceable_teacher AND sub_teacher.id_new_teacher= id_replacing_teacher AND sub_teacher.date_sub = date_sub_teacher) THEN
+				RETURN 'Запись уже существует!';
+			ELSE
+				INSERT INTO sub_teacher(id_teacher, id_new_teacher, date_sub) VALUES (id_replaceable_teacher, id_replacing_teacher, date_sub_teacher);
+				RETURN 'Запись успешно добавлена!';
+			END IF;
+		ELSE
+			RETURN 'Заменяющего преподавателя нет в базе!';
+		END IF;
+	ELSE
+		RETURN 'Заменяемого преподавателя нет в базе!';
+	END IF;
+END
+$BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
 
@@ -1753,6 +1881,37 @@ $BODY$
   COST 100;
 
 -- ----------------------------
+-- Function structure for delete_sub_for_teacher
+-- ----------------------------
+DROP FUNCTION IF EXISTS "public"."delete_sub_for_teacher"("login_input_replaceable_teacher" text, "login_input_replacing_teacher" text, "date_sub_teacher" date);
+CREATE OR REPLACE FUNCTION "public"."delete_sub_for_teacher"("login_input_replaceable_teacher" text, "login_input_replacing_teacher" text, "date_sub_teacher" date)
+  RETURNS "pg_catalog"."text" AS $BODY$
+DECLARE
+	id_replaceable_teacher INTEGER := 0;
+	id_replacing_teacher INTEGER := 0;
+BEGIN
+	IF EXISTS(SELECT * FROM teacher WHERE teacher."login" = login_input_replaceable_teacher) THEN
+	SELECT teacher.id_teacher INTO id_replaceable_teacher WHERE teacher."login" = login_input_replaceable_teacher;
+		IF EXISTS(SELECT * FROM teacher WHERE teacher."login" = login_input_replacing_teacher) THEN
+			SELECT teacher.id_teacher INTO id_replacing_teacher WHERE teacher."login" = login_input_replacing_teacher;
+			IF EXISTS(SELECT * FROM sub_teacher WHERE sub_teacher.id_teacher = id_replaceable_teacher AND sub_teacher.id_new_teacher= id_replacing_teacher AND sub_teacher.date_sub = date_sub_teacher) THEN
+				DELETE FROM sub_teacher WHERE sub_teacher.id_teacher = id_replaceable_teacher AND sub_teacher.id_new_teacher = id_replacing_teacher AND sub_teacher.date_sub = date_sub_teacher;
+				RETURN 'Запись успешно удалена!';
+			ELSE
+				RETURN 'Записи не существует!';
+			END IF;
+		ELSE
+			RETURN 'Заменяющего преподавателя нет в базе!';
+		END IF;
+	ELSE
+		RETURN 'Заменяемого преподавателя нет в базе!';
+	END IF;
+END
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+
+-- ----------------------------
 -- Function structure for delete_subject
 -- ----------------------------
 DROP FUNCTION IF EXISTS "public"."delete_subject"("name_subject_for_delete" text);
@@ -1849,9 +2008,9 @@ BEGIN
 
 	ELSE
 
-		IF is_subject_exist THEN
+		IF is_subject_exist = FALSE THEN
 
-			RETURN 'Предмета не существует!';
+			RETURN 'Преподавателя не существует!';
 
 		ELSE
 
@@ -1860,14 +2019,12 @@ BEGIN
 			SELECT subjects.id_subject INTO id_input_subject FROM subjects WHERE subjects.name_subject = name_input_subject;
 
 			IF EXISTS(SELECT * FROM teacher_subjects WHERE teacher_subjects.id_teacher_for_subject = id_input_teacher AND teacher_subjects.id_subject_for_teacher = id_input_subject) THEN
-
-				RETURN 'Запись уже существует!';
+				DELETE FROM teacher_subjects WHERE teacher_subjects.id_teacher_for_subject = id_input_teacher AND teacher_subjects.id_subject_for_teacher = id_input_subject;
+				RETURN 'Запись успешно удалена!';
 
 			ELSE
 
-				DELETE FROM teacher_subjects WHERE teacher_subjects.id_teacher_for_subject = id_input_teacher AND teacher_subjects.id_subject_for_teacher = id_input_subject;
-
-				RETURN 'Запись успешно удалена!';
+				RETURN 'Записи не существует';
 
 			END IF;
 
@@ -1886,12 +2043,9 @@ $BODY$
 -- ----------------------------
 DROP FUNCTION IF EXISTS "public"."get_all_classes"();
 CREATE OR REPLACE FUNCTION "public"."get_all_classes"()
-  RETURNS TABLE("num_classes" int4) AS $BODY$
-
+  RETURNS TABLE("num_buildings" int4, "num_classes" int4) AS $BODY$
 	BEGIN
-
-		RETURN QUERY SELECT classrooms.num_class FROM classrooms;
-
+		RETURN QUERY SELECT classrooms.num_building, classrooms.num_class FROM classrooms ORDER BY classrooms.num_building ASC;
 END$BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
@@ -1902,9 +2056,9 @@ END$BODY$
 -- ----------------------------
 DROP FUNCTION IF EXISTS "public"."get_all_classes_in_building"("num_house" int4);
 CREATE OR REPLACE FUNCTION "public"."get_all_classes_in_building"("num_house" int4)
-  RETURNS TABLE("classes_in_housing" int4) AS $BODY$BEGIN
+  RETURNS TABLE("num_classes" int4, "num_buildings" int4) AS $BODY$BEGIN
 
-		RETURN QUERY SELECT classrooms.num_class FROM classrooms WHERE classrooms.num_building = num_house;
+		RETURN QUERY SELECT classrooms.num_class, classrooms.num_building FROM classrooms WHERE classrooms.num_building = num_house;
 
 END$BODY$
   LANGUAGE plpgsql VOLATILE
@@ -2060,7 +2214,7 @@ CREATE OR REPLACE FUNCTION "public"."get_all_housing"()
 
 BEGIN
 
-	RETURN QUERY SELECT classrooms.num_building FROM classrooms; 
+	RETURN QUERY SELECT DISTINCT classrooms.num_building FROM classrooms ORDER BY classrooms.num_building ASC; 
 
 END$BODY$
   LANGUAGE plpgsql VOLATILE
@@ -2289,17 +2443,13 @@ $BODY$
 -- ----------------------------
 -- Function structure for get_teacher_by_login
 -- ----------------------------
-DROP FUNCTION IF EXISTS "public"."get_teacher_by_login"("user_login" text);
-CREATE OR REPLACE FUNCTION "public"."get_teacher_by_login"("user_login" text)
-  RETURNS TABLE("name" text, "second_name" text, "third_name" text, "login_teacher" text, "photo" text, "faculty_id" int4, "department_id" int4, "position_id" int4) AS $BODY$
+DROP FUNCTION IF EXISTS "public"."get_teacher_by_login"(IN "user_login" text, OUT "name_teacher" text, OUT "second_name_teacher" text, OUT "third_name_teacher" text, OUT "login" text, OUT "photo_teacher" text, OUT "id_teacher_faculty" int4, OUT "id_teacher_department" int4, OUT "id_teacher_position" int4);
+CREATE OR REPLACE FUNCTION "public"."get_teacher_by_login"(IN "user_login" text, OUT "name_teacher" text, OUT "second_name_teacher" text, OUT "third_name_teacher" text, OUT "login" text, OUT "photo_teacher" text, OUT "id_teacher_faculty" int4, OUT "id_teacher_department" int4, OUT "id_teacher_position" int4)
+  RETURNS SETOF "pg_catalog"."record" AS $BODY$BEGIN
 
-BEGIN
+		RETURN QUERY SELECT teacher.name_teacher, teacher.second_name_teacher, teacher.third_name_teacher, teacher."login", teacher.photo_teacher, teacher.id_teacher_faculty, teacher.id_teacher_department, teacher.id_teacher_position FROM teacher WHERE teacher."login" = user_login;
 
-		RETURN QUERY SELECT teacher.num_teacher, teacher.second_name_teacher, teacher.third_name_teacher, teacher."login", teacher.photo_teacher, teacher.id_teacher_faculty, teacher.id_teacher_department, teacher.id_teacher_position FROM teacher WHERE teacher."login" = user_login;
-
-END
-
-$BODY$
+END$BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100
   ROWS 1000;
@@ -2463,20 +2613,20 @@ END$BODY$
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-SELECT setval('"public"."classrooms_id_classroom_seq"', 3, false);
-SELECT setval('"public"."departments_id_department_seq"', 3, false);
-SELECT setval('"public"."education_type_id_education_type_seq"', 3, false);
-SELECT setval('"public"."faculty_id_faculty_seq"', 3, false);
+SELECT setval('"public"."classrooms_id_classroom_seq"', 21, true);
+SELECT setval('"public"."departments_id_department_seq"', 4, true);
+SELECT setval('"public"."education_type_id_education_type_seq"', 4, true);
+SELECT setval('"public"."faculty_id_faculty_seq"', 11, true);
 SELECT setval('"public"."lesson_id_lesson_seq"', 3, false);
 SELECT setval('"public"."payment_type_id_payment_type_seq"', 3, false);
-SELECT setval('"public"."specialization_id_specialization_seq"', 3, false);
-SELECT setval('"public"."students_groups_id_group_seq"', 3, false);
-SELECT setval('"public"."subjects_id_subject_seq"', 3, false);
-SELECT setval('"public"."teacher_id_teacher_seq"', 3, false);
+SELECT setval('"public"."specialization_id_specialization_seq"', 3, true);
+SELECT setval('"public"."students_groups_id_group_seq"', 3, true);
+SELECT setval('"public"."subjects_id_subject_seq"', 4, true);
+SELECT setval('"public"."teacher_id_teacher_seq"', 6, true);
 SELECT setval('"public"."teachers_on_lesson_ID_seq"', 3, false);
-SELECT setval('"public"."teachers_positions_id_position_seq"', 3, false);
-SELECT setval('"public"."type_lesson_id_type_lesson_seq"', 3, false);
-SELECT setval('"public"."week_id_week_day_seq"', 3, false);
+SELECT setval('"public"."teachers_positions_id_position_seq"', 15, true);
+SELECT setval('"public"."type_lesson_id_type_lesson_seq"', 18, true);
+SELECT setval('"public"."week_id_week_day_seq"', 16, true);
 
 -- ----------------------------
 -- Primary Key structure for table classrooms
@@ -2592,7 +2742,7 @@ ALTER TABLE "public"."sub_teacher" ADD CONSTRAINT "fk_sub_teacher_teachers_on_le
 -- ----------------------------
 ALTER TABLE "public"."teacher" ADD CONSTRAINT "fk_teacher_departments_1" FOREIGN KEY ("id_teacher_department") REFERENCES "departments" ("id_department") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."teacher" ADD CONSTRAINT "fk_teacher_faculty_1" FOREIGN KEY ("id_teacher_faculty") REFERENCES "faculty" ("id_faculty") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."teacher" ADD CONSTRAINT "fk_teacher_teachers_positions_1" FOREIGN KEY ("id_teacher_position") REFERENCES "teachers_positions" ("id_position") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."teacher" ADD CONSTRAINT "fk_teacher_teachers_positions_1" FOREIGN KEY ("id_teacher_position") REFERENCES "teachers_positions" ("id_position") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table teacher_subjects
